@@ -1,1 +1,9 @@
-<p>user works!</p>
+users bozuk
+<table class="table">
+  <tr *ngFor="let user of users">
+    <td>{{ user.userId }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.lastName }}</td>
+  </tr>
+</table>

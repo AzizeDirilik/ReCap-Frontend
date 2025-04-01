@@ -18,7 +18,7 @@ export class CarComponent implements OnInit {
   constructor(private httpclient: HttpClient) {}
 
   ngOnInit(): void {
-    console.log('Init calisti');
+    this.getCars();
   }
 
   getCars() {
