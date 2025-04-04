@@ -1,9 +1,18 @@
-users bozuk
 <table class="table">
-  <tr *ngFor="let user of users">
-    <td>{{ user.userId }}</td>
-    <td>{{ user.email }}</td>
-    <td>{{ user.firstName }}</td>
-    <td>{{ user.lastName }}</td>
-  </tr>
+  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">E-Mail</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users" class="table-info">
+      <td>{{ user.userId }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+    </tr>
+  </tbody>
 </table>

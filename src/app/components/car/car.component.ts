@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { Car } from '../../models/car/car';
 import { HttpClient } from '@angular/common/http';
 import { CarResponseModel } from '../../models/car/carResponseModel';

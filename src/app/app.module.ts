@@ -16,6 +16,7 @@ import { BrandComponent } from './components/brand/brand.component';
 import { CarImageComponent } from './components/car-image/car-image.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { CarDtoComponent } from './components/car-dto/car-dto.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NaviComponent } from './components/navi/navi.component';
     CarImageComponent,
     CustomerComponent,
     NaviComponent,
+    CarDtoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CarComponent],
   providers: [
