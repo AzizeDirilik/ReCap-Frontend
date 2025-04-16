@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarDto } from '../../models/car-dto/carDto';
-import { HttpClient } from '@angular/common/http';
-import { CarDtoResponseModel } from '../../models/car-dto/carDtoResponseModel';
+import { CarDtoService } from '../../services/car-dto.service';
 
 @Component({
   selector: 'app-car-dto',
@@ -11,19 +10,18 @@ import { CarDtoResponseModel } from '../../models/car-dto/carDtoResponseModel';
 })
 export class CarDtoComponent implements OnInit {
   cars: CarDto[] = [];
+  dataLoaded = false;
 
-  apiUrl = 'https://localhost:44329/api/cars/getcardetails';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private carDtoService: CarDtoService) {}
 
   ngOnInit(): void {
     this.getCarsDto();
   }
 
   getCarsDto() {
-    this.httpClient
-      .get<CarDtoResponseModel>(this.apiUrl)
-      .subscribe((response) => {
-        this.cars = response.data;
-      });
+    this.carDtoService.getCarsDto().subscribe((response) => {
+      this.cars = response.data;
+      this.dataLoaded = true;
+    });
   }
 }

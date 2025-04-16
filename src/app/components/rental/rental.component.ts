@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Rental } from '../../models/rental/rental';
-import { HttpClient } from '@angular/common/http';
-import { RentalResponseModel } from '../../models/rental/rentalResponseModel';
+import { RentalService } from '../../services/rental.service';
 
 @Component({
   selector: 'app-rental',
@@ -12,18 +11,15 @@ import { RentalResponseModel } from '../../models/rental/rentalResponseModel';
 export class RentalComponent {
   rentals: Rental[] = [];
 
-  apiUrl = 'https://localhost:44329/api/rentals/getall';
-  constructor(private httpclient: HttpClient) {}
+  constructor(private rentalService: RentalService) {}
 
   ngOnInit(): void {
     this.getRentals();
   }
 
   getRentals() {
-    this.httpclient
-      .get<RentalResponseModel>(this.apiUrl)
-      .subscribe((response) => {
-        this.rentals = response.data;
-      });
+    this.rentalService.getRentals().subscribe((response) => {
+      this.rentals = response.data;
+    });
   }
 }

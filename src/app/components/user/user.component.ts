@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user/user';
-import { HttpClient } from '@angular/common/http';
-import { UserResponseModel } from '../../models/user/userResponseModel';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -12,18 +11,15 @@ import { UserResponseModel } from '../../models/user/userResponseModel';
 export class UserComponent implements OnInit {
   users: User[] = [];
 
-  apiUrl = 'https://localhost:44329/api/users/getall';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.getUsers();
   }
 
   getUsers() {
-    this.httpClient
-      .get<UserResponseModel>(this.apiUrl)
-      .subscribe((response) => {
-        this.users = response.data;
-      });
+    this.userService.getUsers().subscribe((response) => {
+      this.users = response.data;
+    });
   }
 }
